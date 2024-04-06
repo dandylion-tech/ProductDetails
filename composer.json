@@ -1,0 +1,25 @@
+{
+    "name": "dandylion/productdetails",
+    "type": "library",
+    "description": "Gets product details from a site",
+    "keywords": [],
+    "homepage": "https://serverbook.app",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Codey Miller",
+            "email": "codey.miller@dandyliontech.co.uk",
+            "homepage": "https://serverbook.app",
+            "role": "CTO"
+        }
+    ],
+    "require": {
+        "php": ">=8.0.0",
+        "curl/curl": "^2.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Dandylion\\": "/src"
+        }
+    }
+}
