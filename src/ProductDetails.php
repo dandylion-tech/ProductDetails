@@ -10,7 +10,8 @@
                 $dom = new \DOMDocument();
                 @$dom->loadHTML($html);
                 $xpath = new \DOMXPath($dom);
-                $title = $xpath->query('//title')->item(0)->nodeValue;
+                $title = trim($xpath->query('//title')->item(0)->nodeValue);
+                $title = $title;
                 $description = $xpath->query('//meta[@name="description"]')->item(0)->getAttribute('content');
                 $image = $xpath->query('//meta[@property="og:image"]')->item(0)->getAttribute('content');
                 $price = $xpath->query('//meta[@property="og:price:amount"]')->item(0)->getAttribute('content');
