@@ -17,12 +17,17 @@
                     $name = str_replace('og:', '', $meta_data->item($i)->getAttribute('property'));
                     $data[$name] = trim($meta_data->item($i)->getAttribute('content'));
                 }
+                $image_url = $data["image:secure_url"]??$data["image"];
+                if(preg_match("/^\/\//",$image_url)){
+                    $image_url = "https:".$image_url;
+                }
+
                 $response = [
                     "title"=>$data["title"],
                     "link"=>$data["url"],
                     "currency"=>$data["price:currency"],
                     "price"=>$data["price:amount"],
-                    "image_url"=>$data["image:secure_url"]??$data["image"]
+                    "image_url"=>$image_url
                 ];
                 return (object)$response;
             } else {
