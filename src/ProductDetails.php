@@ -21,12 +21,16 @@
                 if(preg_match("/^\/\//",$image_url)){
                     $image_url = "https:".$image_url;
                 }
+                $price = $data["price:amount"];
+                if($price==null){
+                    $price = $xpath->query('//li[@itemprop="price"]')->item(0)->getAttribute("content");
+                }
 
                 $response = [
                     "title"=>$data["title"],
                     "link"=>$data["url"],
                     "currency"=>$data["price:currency"],
-                    "price"=>$data["price:amount"],
+                    "price"=>$price,
                     "image_url"=>$image_url
                 ];
                 return (object)$response;
