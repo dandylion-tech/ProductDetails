@@ -21,9 +21,12 @@
                 if(preg_match("/^\/\//",$image_url)){
                     $image_url = "https:".$image_url;
                 }
-                $price = $data["price:amount"];
+                $price = $data["price:amount"]??null;
                 if($price==null){
-                    $price = $xpath->query('//li[@itemprop="price"]')->item(0)->getAttribute("content");
+                    $item = $xpath->query('//li[@itemprop="price"]')->item(0);
+                    if($item!==null){
+                        $price = $item->getAttribute("content");
+                    }
                 }
 
                 $response = [
